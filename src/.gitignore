@@ -15,3 +15,11 @@
 
 # VS Code files
 .vscode/
+
+# Ignore Maven build directory
+target/
+
+# IDE folders
+.idea/
+.vscode/
+*.iml

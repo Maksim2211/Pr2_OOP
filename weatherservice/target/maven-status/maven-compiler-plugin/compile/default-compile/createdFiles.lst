@@ -1,0 +1,14 @@
+com/weatherservice/Meteorologist.class
+com/weatherservice/SubscriberService.class
+com/weatherservice/App.class
+com/weatherservice/Region.class
+com/weatherservice/ServiceNotifier.class
+com/weatherservice/Subscriber.class
+com/weatherservice/Warning.class
+com/weatherservice/Main.class
+com/weatherservice/WeatherSystemParticipant.class
+com/weatherservice/INotificationPlan.class
+com/weatherservice/NotificationService.class
+com/weatherservice/EventThreshold.class
+com/weatherservice/weatherserviceModule.class
+com/weatherservice/Technician.class

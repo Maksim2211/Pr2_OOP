@@ -1,0 +1,14 @@
+/workspaces/Pr2_OOP/weatherservice/src/main/java/com/weatherservice/App.java
+/workspaces/Pr2_OOP/weatherservice/src/main/java/com/weatherservice/EventThreshold.java
+/workspaces/Pr2_OOP/weatherservice/src/main/java/com/weatherservice/INotificationPlan.java
+/workspaces/Pr2_OOP/weatherservice/src/main/java/com/weatherservice/Main.java
+/workspaces/Pr2_OOP/weatherservice/src/main/java/com/weatherservice/Meteorologist.java
+/workspaces/Pr2_OOP/weatherservice/src/main/java/com/weatherservice/NotificationService.java
+/workspaces/Pr2_OOP/weatherservice/src/main/java/com/weatherservice/Region.java
+/workspaces/Pr2_OOP/weatherservice/src/main/java/com/weatherservice/ServiceNotifier.java
+/workspaces/Pr2_OOP/weatherservice/src/main/java/com/weatherservice/Subscriber.java
+/workspaces/Pr2_OOP/weatherservice/src/main/java/com/weatherservice/SubscriberService.java
+/workspaces/Pr2_OOP/weatherservice/src/main/java/com/weatherservice/Technician.java
+/workspaces/Pr2_OOP/weatherservice/src/main/java/com/weatherservice/Warning.java
+/workspaces/Pr2_OOP/weatherservice/src/main/java/com/weatherservice/WeatherSystemParticipant.java
+/workspaces/Pr2_OOP/weatherservice/src/main/java/com/weatherservice/weatherserviceModule.java
