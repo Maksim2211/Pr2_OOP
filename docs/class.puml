@@ -1,6 +1,5 @@
 @startuml
-title UML-діаграма класів: Метеосервіс + DI через Google Guice
-
+title UML-діаграма класів
 skinparam classAttributeIconSize 0
 
 ' --------------------------------------
@@ -74,11 +73,17 @@ class СервисСповіщень {
   + надіслати(text:string) : bool
 }
 
+' Додаємо setter injection
+СервисСповіщень ..> SubscriberService : <<inject setter>>
+
 class SubscriberService {
   - connection : Connection                   <<injected>>
   + SubscriberService(connection:Connection)
   + saveSubscriber(п:Підписник) : void
 }
+
+' Додаємо setter injection
+SubscriberService ..> Connection : <<inject setter>>
 
 class weatherserviceModule <<Guice Module>> {
   + configure() : void
@@ -112,8 +117,8 @@ class SQLiteDriver <<JDBC Driver>> {
 СервисСповіщень *-- Підписник : composition
 
 ' DI залежності
-СервисСповіщень ..> SubscriberService : <<inject>>
-SubscriberService ..> Connection : <<inject>>
+СервисСповіщень ..> SubscriberService : <<inject setter>>
+SubscriberService ..> Connection : <<inject setter>>
 
 ' SubscriberService використовує Підписник
 SubscriberService ..> Підписник : uses

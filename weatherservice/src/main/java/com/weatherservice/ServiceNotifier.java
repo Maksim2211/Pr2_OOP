@@ -13,48 +13,43 @@ public class ServiceNotifier {
     private List<Subscriber> subscribers = new ArrayList<>();
     private List<String> addresses = new ArrayList<>();
 
-    private final SubscriberService subscriberService;
+    private SubscriberService subscriberService;
 
-    /**
-     * Впровадження залежності через конструктор.
-     */
+    // -------------------------------------
+    // ❌ Конструктор закоментовано раніше (пункт 3.1)
+    // -------------------------------------
+    /*
     @Inject
     public ServiceNotifier(SubscriberService subscriberService) {
         this.subscriberService = subscriberService;
     }
+    */
 
-    /**
-     * Додає адресу в список адресатів.
-     */
+    // ---------------------------
+    // ✔ Setter injection (пункт 3.2)
+    // ---------------------------
+    @Inject
+    public void setSubscriberService(SubscriberService subscriberService) {
+        this.subscriberService = subscriberService;
+    }
+
     public void addAddress(String address) {
         addresses.add(address);
     }
 
-    /**
-     * Додає підписника і одразу зберігає його у базу даних.
-     */
     public void addSubscriber(Subscriber subscriber) {
         subscribers.add(subscriber);
 
         // Викликаємо збереження у БД
-        subscriberService.saveSubscriber(subscriber);
-
-        System.out.println("Підписник " + subscriber.getName() + " доданий і збережений у базі.");
+        if (subscriberService != null) {
+            subscriberService.saveSubscriber(subscriber);
+        }
     }
 
-    /**
-     * Розсилає повідомлення всім підписникам.
-     */
     public boolean send(String text) {
-        if (subscribers.isEmpty()) {
-            System.out.println("Немає підписників для відправки.");
-            return false;
+        for (Subscriber s : subscribers) {
+            s.deliverMessage(text);
         }
-
-        for (Subscriber subscriber : subscribers) {
-            subscriber.deliverMessage(text);
-        }
-
         return true;
     }
 }

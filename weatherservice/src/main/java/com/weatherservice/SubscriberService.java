@@ -10,29 +10,35 @@ import java.sql.SQLException;
  */
 public class SubscriberService {
 
-    private final Connection connection;
+    private Connection connection;
 
-    /**
-     * Конструктор з впровадженням залежності через Google Guice.
-     *
-     * @param connection з'єднання з базою даних SQLite
-     */
+    // -------------------------------------
+    // ❌ Конструктор закоментовано раніше (пункт 3.1)
+    // -------------------------------------
+    /*
     @Inject
     public SubscriberService(Connection connection) {
         this.connection = connection;
     }
+    */
+
+    // ---------------------------
+    // ✔ Setter injection (пункт 3.2)
+    // ---------------------------
+    @Inject
+    public void setConnection(Connection connection) {
+        this.connection = connection;
+    }
 
     /**
-     * Зберігає атрибут об'єкта Subscriber у таблицю subscribers.
-     *
-     * @param subscriber об'єкт Підписника для збереження
+     * Зберігає підписника в базу даних.
      */
     public void saveSubscriber(Subscriber subscriber) {
         String sql = "INSERT INTO subscribers (name) VALUES (?)";
 
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setString(1, subscriber.getName());
-            statement.executeUpdate();
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, subscriber.getName());
+            stmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException("Failed to save subscriber", e);
         }
